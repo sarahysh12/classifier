@@ -67,9 +67,7 @@ def get_prediction_object(prediction_doc):
     return {'image_path': prediction_doc['image_path'], 'prediction_result': classes}
 
 
-app.config.from_json("config.json")
-app.config['MONGO_DBNAME'] = os.environ.get('ML_APP_MONGO_DBNAME', default=app.config['MONGO_DBNAME'])
-app.config['MONGO_URI'] = os.environ.get('ML_APP_MONGO_URI', default=app.config['MONGO_URI'])
+app.config.from_pyfile("config.py")
 
 mongo = PyMongo(app)
 app.run(host='0.0.0.0', port=os.environ.get('ML_APP_PORT', default=8080))
