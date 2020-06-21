@@ -1,0 +1,7 @@
+tensorflow
+pillow
+flask-pymongo
+flask
+flask-swagger-ui
+flask-cors
+

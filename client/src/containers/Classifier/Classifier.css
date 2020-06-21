@@ -1,0 +1,7 @@
+.Classifier {
+  display: flex;
+  justify-content: left;
+  flex-flow: row wrap; 
+  margin-top: 20px;
+  margin-left: 20px;
+}

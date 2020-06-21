@@ -1,0 +1,19 @@
+# general
+*.DS_*
+.idea
+.vscode
+
+# api 
+__pycache__
+*.py[co]
+/api/Classifier_Images
+venv
+
+# client
+node_modules
+build
+
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

@@ -1,0 +1,93 @@
+swagger: "2.0"
+info:
+  description: "This is the REST API documentation for Image Classification Module"
+  version: "1.0.0"
+  title: "Swagger Image Classification"
+  contact:
+    email: "saraysh22@gmail.com"
+tags:
+- name: "predict"
+  description: "image classification with resnet50"
+schemes:
+- "http"
+paths:
+  /api/predict:
+    post:
+      tags:
+      - "predict"
+      summary: "Add a new image classification result to the store"
+      description: ""
+      operationId: "addPrediction"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Only an image url needs to passed to the prediction model"
+        required: true
+        schema:
+          $ref: "#/definitions/Image"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Predict"
+        "400":
+          description: "Invalid url"
+        "500":
+          description: "Internal server error"
+  /api/history:
+    get:
+      tags:
+      - "history"
+      summary: "Get all prediction results"
+      description: "Returns all predicted results"
+      operationId: "getAll"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AllPredictions"
+definitions:
+  Image:
+    type: "object"
+    required:
+    - "name"
+    - "image"
+    properties:
+      image:
+        type: "string"
+        description: "an image url on the internet with the proper format (jpg, png, jpeg)"
+        enum:
+        - "http://pngimg.com/uploads/elephants/elephants_PNG18792.png"
+        - "https://upload.wikimedia.org/wikipedia/commons/f/f9/Loxodonta_africana_-_old_bull_%28Ngorongoro%2C_2009%29.jpg"
+  Predict:
+    type: "object"
+    required:
+    - "name"
+    - "image_path"
+    properties:
+      image_path:
+        type: "string"
+      predictions:
+        type: "array"
+        items:
+          properties:
+            score:
+              type: "string"
+            type:
+              type: "string"
+  AllPredictions:
+    type: "object"
+    description: "all predictions done by image classification model"
+    required:
+    - "result"
+    properties:
+      result:
+        type: "array"
+        items:
+          $ref: "#/definitions/Predict"

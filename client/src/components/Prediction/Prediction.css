@@ -1,0 +1,22 @@
+.Prediction {
+    width: 350px;
+    height: 500px;
+	padding: 10px;
+	text-align: center;
+	margin: 20px;
+	background-color: white;
+	-webkit-box-shadow: 3px 9px 46px -13px rgba(110,110,110,0.62);
+	-moz-box-shadow: 3px 9px 46px -13px rgba(110,110,110,0.62);
+	box-shadow: 3px 9px 46px -13px rgba(110,110,110,0.62);
+	border-radius: 10px;
+}
+.Prediction img {
+    width: 100%;
+    height: 70%;
+}
+
+.Prediction span {
+    color: #0c48a8;
+    font-size: 19px;
+    text-transform: capitalize;
+}

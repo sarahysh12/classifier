@@ -1,0 +1,5 @@
+{
+  "DEBUG": true,
+  "MONGO_DBNAME": "ImageClassifierDB",
+  "MONGO_URI": "mongodb://mongo:27017/ImageClassifierDB"
+}
