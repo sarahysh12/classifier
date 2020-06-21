@@ -9,7 +9,7 @@ class Classifier extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8080/api/history')
+        axios.get(process.env.REACT_APP_API_ADDR+'/api/history')
         .then(response => {
             this.setState({predictions: response.data.result});
         })
