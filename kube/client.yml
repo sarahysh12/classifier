@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: client
+  name: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - image: us.gcr.io/animal-classifier/client
+        name: client
+        resources: 
+          requests:
+            cpu: 200m
+            memory: 500M
+          limits:
+            cpu: 200m
+            memory: 500M
+        ports:
+        - containerPort: 3000
+        env:
+        - name: REACT_APP_API_ADDR
+          value: "http://35.199.185.214"
+        - name: CI
+          value: "true"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: client
+  labels:
+    app: client
+spec:
+  type: LoadBalancer
+  selector:
+    app: client
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  loadBalancerIP: "34.82.132.186"
